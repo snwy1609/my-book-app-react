@@ -21,10 +21,10 @@ const Menu: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
          
-           <IonContent class='ion-padding'>
+           <IonContent >
                {paths.map((item,index) => (
                 <IonMenuToggle  key={index} autoHide={false}>
-                     <IonItem detail={false} routerLink={item.url} routerDirection="none">
+                     <IonItem detail={true} routerLink={item.url} routerDirection="none">
                       <IonIcon icon={item.icon} className="ion-padding"></IonIcon>{item.name}
                    </IonItem>
                 </IonMenuToggle>
