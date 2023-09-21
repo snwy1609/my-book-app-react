@@ -1,0 +1,4 @@
+ion-item:hover {
+    --background: rgb(0, 234, 255);
+    --color: var(--ion-color-medium);
+}

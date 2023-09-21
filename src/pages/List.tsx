@@ -1,6 +1,7 @@
-import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonChip, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonMenuButton, IonModal, IonPage, IonRefresher, IonRefresherContent, IonSearchbar, IonSegment, IonSegmentButton, IonSkeletonText, IonTitle, IonToolbar, useIonAlert, useIonToast, useIonViewWillEnter } from '@ionic/react';
+import { IonAvatar, IonButton, IonButtons, IonCard, IonDatetime, IonCardContent, IonCardHeader, IonCardTitle, IonChip, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonMenuButton, IonModal, IonPage, IonRefresher, IonRefresherContent, IonSearchbar, IonSegment, IonSegmentButton, IonSkeletonText, IonTitle, IonToolbar, useIonAlert, useIonToast, useIonViewWillEnter } from '@ionic/react';
 import { addOutline, trashBinOutline } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react';
+import './List.css';
 
 const List: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -77,7 +78,7 @@ const List: React.FC = () => {
                     </IonButtons>
                 </IonToolbar>
                 <IonToolbar color={'primary'}>
-                    <IonSearchbar />
+                    <IonSearchbar mode='ios'/>
                 </IonToolbar>
             </IonHeader>
 
@@ -96,7 +97,7 @@ const List: React.FC = () => {
                         </IonCardHeader> */}
                         <IonCardContent className='ion-no-padding'>
                            
-                            <IonItem lines="none">
+                            <IonItem lines="none" mode='ios'>
                                 <IonAvatar slot="start">
                                    <IonSkeletonText />
                                  </IonAvatar>
@@ -174,6 +175,8 @@ const List: React.FC = () => {
                              </IonCardContent>
                            </IonCard> 
                         )}
+
+                        {activeSegment === 'calendar' && <IonDatetime />}
                         
                     </IonContent>
                 </IonModal>

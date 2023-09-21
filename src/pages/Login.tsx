@@ -69,17 +69,17 @@ const Login: React.FC = () => {
                             <IonCardContent className='ion-padding'>
                                 
                                 <form onSubmit={doLogin}>
-                                    <IonInput fill="outline" labelPlacement='floating' label='email' type='email' placeholder='name@gmail.com'></IonInput>
-                                    <IonInput className='ion-margin-top' fill="outline" labelPlacement='floating' label='password' type='password' placeholder='password'></IonInput>
+                                    <IonInput mode='md' fill="outline" labelPlacement='floating' label='Email' type='email' placeholder='name@gmail.com'></IonInput>
+                                    <IonInput mode='md' fill="outline" className='ion-margin-top' labelPlacement='floating' label='Password' type='password' placeholder='password'></IonInput>
                                     <IonButton type='submit' expand='block' className='ion-margin-top'>
                                         Login
                                         <IonIcon icon={logInOutline}></IonIcon>
                                     </IonButton>
-                                    <IonButton routerLink='/register' type='button' color={'secondary'} expand='block' className='ion-margin-top'>
+                                    <IonButton  routerLink='/register' type='button' color={'secondary'} expand='block' className='ion-margin-top'>
                                         Create Account
                                         <IonIcon icon={personCircleOutline}></IonIcon>
                                     </IonButton>
-                                    <IonButton onClick={seeIntroAgain} size='small' fill='clear' type='button' color={'medium'} expand='block' className='ion-margin-top'>
+                                    <IonButton  onClick={seeIntroAgain} size='small' fill='clear' type='button' color={'medium'} expand='block' className='ion-margin-top'>
                                         Watch Intro Again
                                     
                                     </IonButton>
