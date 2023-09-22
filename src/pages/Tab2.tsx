@@ -1,67 +1,29 @@
-import { CreateAnimation, createGesture, Gesture, GestureDetail, IonButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonViewDidEnter } from '@ionic/react';
+import { CreateAnimation, createGesture, Gesture, GestureDetail, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar, useIonViewDidEnter } from '@ionic/react';
 import React, { useRef } from 'react';
 
 const Tab2: React.FC = () => {
 
-    const animationRef = useRef<CreateAnimation | null>(null)
-    const elementRef = useRef<HTMLDivElement | null>(null)
-
-    useIonViewDidEnter(() => {
-        // animationRef.current?.animation.play();
-
-        const gesture: Gesture = createGesture({
-            el: elementRef.current!,
-            threshold: 0,
-            gestureName: 'my-gesture',
-            onStart: (ev) => onStartHandler(ev),
-            onMove: (ev) => onMoveHandler(ev),
-            onEnd: (ev) => onMoveEnd(ev),
-        });
-        gesture.enable();
-        
-    });
-
-    const onStartHandler = (detail: GestureDetail) => {      
-        elementRef.current!.style.transition = 'none';
-     };
- 
-
-    const onMoveHandler = (detail: GestureDetail) => {
-       const x = detail.currentX - detail.startX;
-       const y = detail.currentY - detail.startY;
-
-       elementRef.current!.style.transform = `translate(${x}px, ${y}px)`;
-    };
-
-    const onMoveEnd = (detail: GestureDetail) => {
-        elementRef.current!.style.transition = '500ms ease-out';
-        elementRef.current!.style.transform = `translate(0px, 0px)`;
-  
-    }
 
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar color={'primary'}>
-                    <IonButtons slot='start'>
-                        <IonMenuButton ></IonMenuButton>
-                    </IonButtons>
-                    <IonTitle>Tab 2</IonTitle>
+                    <IonTitle>Library</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding" scrollY={false}>
-                <CreateAnimation ref={animationRef} duration={2000} iterations={Infinity} delay={1000}
-                   keyframes={[
-                    {offset:0, transform: 'scale(1)', opacity: '1'},
-                    {offset:0.5, transform: 'scale(1.5)', opacity: '0.5'},
-                    {offset:1, transform: 'scale(1)', opacity: '1'},
-                   ]}>
-                    <IonButton expand="block" color={'success'} className="ion-margin">
-                        Join 
-                    </IonButton>
-                </CreateAnimation>
-
-                <div ref={elementRef} style={{width: 50, height:50, background: 'red'}}></div>
+                <IonGrid>
+                    <IonRow>
+                        <IonCol size='6'>
+                             <h4>Available Offline</h4>
+                        </IonCol>
+                        <IonCol size='6' >
+                             <h6>0 Stories</h6>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+               
+               
             </IonContent>
         </IonPage>
     );

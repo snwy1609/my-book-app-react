@@ -22,7 +22,7 @@ const Tab1: React.FC = () => {
                    <IonButtons slot='start'>
                         <IonMenuButton ></IonMenuButton>
                     </IonButtons>
-                    <IonTitle>Image Example</IonTitle>
+                    <IonTitle>Write</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
