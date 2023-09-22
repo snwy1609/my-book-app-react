@@ -1,14 +1,15 @@
 import { IonContent, IonHeader, IonMenu, IonPage, IonButton, IonIcon, IonItem, IonRouterOutlet, IonTitle, IonToolbar, IonMenuToggle, IonSplitPane } from '@ionic/react';
-import { homeOutline, logOutOutline, settingsOutline } from 'ionicons/icons';
+import { homeOutline, logOutOutline, personOutline, settingsOutline } from 'ionicons/icons';
 import React from 'react';
 import { Redirect, Route } from 'react-router';
 import List from './List';
-import Settings from './Settings';
+import Tabs from './Tabs';
 
 const Menu: React.FC = () => {
     const paths = [
-        { name: 'Home', url: '/app/list', icon: homeOutline },
-        { name: 'Settings', url: '/app/settings', icon: settingsOutline},
+        { name: 'Home', url: '/app/home', icon: homeOutline},
+        { name: 'Profile', url: '/app/list', icon: personOutline },
+       
 
     ];
     return (
@@ -41,9 +42,9 @@ const Menu: React.FC = () => {
           </IonMenu>
            <IonRouterOutlet id="main">
              <Route exact path= "/app/list" component={List} />
-             <Route path= "/app/settings" component={Settings} />
+             <Route path= "/app/home" component={Tabs} />
              <Route exact path="/app">
-                <Redirect to="/app/list" />
+                <Redirect to="/app/home" />
              </Route>
            </IonRouterOutlet>
            </IonSplitPane>

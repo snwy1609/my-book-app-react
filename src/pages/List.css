@@ -1,4 +1,11 @@
 ion-item:hover {
-    --background: rgb(0, 234, 255);
-    --color: var(--ion-color-medium);
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
 }
+
+.circle-image {
+    width: 35px; /* Adjust the width and height as needed */
+    height:35px;
+    border-radius: 50%;
+    object-fit: cover; /* This property ensures the image maintains its aspect ratio */
+  }
