@@ -1,6 +1,7 @@
-import { IonButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React, { useState } from 'react';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import GoogleBook from '../pages/components/GoogleBook';
 
 const Tab1: React.FC = () => {
 
@@ -28,7 +29,12 @@ const Tab1: React.FC = () => {
             <IonContent className="ion-padding">
                 <IonButton expand='full' onClick={takePicture}>Take Picture</IonButton>
                 <img src={image} alt="" />
+
+                <IonGrid>
+                    <GoogleBook></GoogleBook>
+                </IonGrid>
             </IonContent>
+            
         </IonPage>
     );
 };

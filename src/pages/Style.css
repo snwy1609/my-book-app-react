@@ -9,3 +9,6 @@ ion-item:hover {
     border-radius: 50%;
     object-fit: cover; /* This property ensures the image maintains its aspect ratio */
   }
+
+
+ 
