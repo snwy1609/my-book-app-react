@@ -15,7 +15,7 @@ const Menu: React.FC = () => {
     return (
         <IonPage>
           <IonSplitPane contentId="main">
-           <IonMenu contentId='main'>
+           <IonMenu contentId='main' side='end'>
             <IonHeader>
                 <IonToolbar color={'secondary'}>
                     <IonTitle>Menu</IonTitle>
@@ -32,8 +32,8 @@ const Menu: React.FC = () => {
                   
                ))}
 
-               <IonMenuToggle  autoHide={false}>
-                     <IonButton expand='full'  routerLink='/' routerDirection="root">
+               <IonMenuToggle  autoHide={false}> 
+                     <IonButton expand='full'  routerLink='/' routerDirection="root" color={'secondary'}>
                       <IonIcon slot='start' icon={logOutOutline}></IonIcon>Logout
                    </IonButton>
                 </IonMenuToggle>

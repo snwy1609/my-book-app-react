@@ -15,7 +15,7 @@ const SwiperCard: React.FC = () => {
                     <p className='ion-text-start'>But Maybe being together isn't as easy as it seems...</p>            
                   </div>               
                   <IonCard>                             
-                    <IonImg src="https://picsum.photos/id/21/400/200" alt="logo"  />                             
+                    <IonImg src="https://picsum.photos/id/65/400/200" alt="logo"  style={{filter: 'contrast(0.50)', transparency:''}} />                             
                   </IonCard>
                </div>              
             </SwiperSlide>
