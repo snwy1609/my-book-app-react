@@ -1,4 +1,4 @@
-import { IonAvatar, IonButton, IonButtons, IonCol, IonContent, IonCard, IonGrid, IonHeader, IonIcon, IonImg, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonAvatar, IonButton, IonButtons, IonCol, IonContent, IonCard, IonGrid, IonHeader, IonIcon, IonImg, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonPage, IonRow, IonText, IonTitle, IonToolbar, IonMenuButton, IonMenuToggle } from '@ionic/react';
 import React from 'react';
 import RecommendationCard from '../pages/components/RecommendationCard'
 
@@ -11,31 +11,34 @@ const Home: React.FC = () => {
    
       
     return (
-        <IonPage >
+        <IonPage>
             <IonHeader>
-                <IonToolbar color={'primary'}>
-                    <IonTitle >Home</IonTitle>
-                    <IonButtons slot='end'>
-                        <IonButton >
-                        <img
-                                src="https://picsum.photos/id/89/400/200" // Replace with the URL or path to your image
-                                alt="Your Image Alt Text"
-                                className="circle-image" style={{border:'solid', borderColor: 'white'}} // Apply the circle-image class here
-                            />
-                         </IonButton>
-                    </IonButtons>
-                </IonToolbar>
+            <IonToolbar color={'primary'}>
+                <IonTitle>Home</IonTitle>
+                <IonButtons slot='end'>
+                <IonMenuToggle autoHide='false'>
+                    <IonButton>
+                    <img
+                        src="https://picsum.photos/id/89/400/200" // Replace with the URL or path to your image
+                        alt="Your Image Alt Text"
+                        className="circle-image"
+                        style={{ border: 'solid', borderColor: 'white' }} // Apply the circle-image class here
+                    />
+                    </IonButton>
+                </IonMenuToggle>
+                </IonButtons>
+            </IonToolbar>
             </IonHeader>
-            <IonContent>
+            <IonContent scrollY>
              
             
 
                <SwiperCard />
-                <div style={{height:'240px'}}>
+                <div style={{height:'250px'}}>
                           <RecommendationCard /> 
                 </div>
                 
-                <div style={{height:'240px'}}>
+                <div style={{height:'250px'}}>
                       <TopPicksCard />
                 </div>
              

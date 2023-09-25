@@ -35,7 +35,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                  </IonButtons>                      
            </IonToolbar>
         </IonHeader>
-        <IonContent>
+        <IonContent scrollY>
         <IonCard style={{ display: 'flex', justifyContent: 'center' }}>
             <IonCardContent className='ion-no-padding'>
             <div
@@ -43,7 +43,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 padding: '30px',
-                borderBottom: 'solid',
+                
                 }}
             >
                 <IonImg
@@ -52,7 +52,11 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                 />
             </div>
 
-            <IonItem lines='none'>
+        
+            </IonCardContent>
+        </IonCard>
+
+        <IonItem lines='none'>
                 <IonLabel className='ion-text-wrap ion-color-primary'>
                 <div className='ion-color-primary ion-padding-top'>
                     <h2 style={{ fontWeight: 'bold', fontSize: '23px' }} className='ion-color-primary'>
@@ -88,8 +92,6 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                 </p>
                 </IonLabel>
             </IonItem>
-            </IonCardContent>
-        </IonCard>
         </IonContent>
     </IonModal>
   );

@@ -32,7 +32,8 @@ const PicksCard = () => {
     try {
       // Replace 'YOUR_API_KEY' with your actual Google Books API key
       const apiKey = 'AIzaSyAvrvt_qN7X4lvRWTU70r1qG1V6qQf3Auw';
-      const path = `https://www.googleapis.com/books/v1/volumes?q=romantic&key=${apiKey}`;
+      const maxResults = 40;
+      const path = `https://www.googleapis.com/books/v1/volumes?q=bestprogramming&maxResults=${maxResults}&key=${apiKey}`;
       const response = await fetch(path);
       const data = await response.json();
       setResponseData(data);
@@ -76,7 +77,7 @@ const PicksCard = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover',
+                      
                     }}
                   />
                 </IonCard>
