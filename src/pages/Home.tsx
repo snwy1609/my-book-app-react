@@ -1,15 +1,17 @@
 import { IonAvatar, IonButton, IonButtons, IonCol, IonContent, IonCard, IonGrid, IonHeader, IonIcon, IonImg, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
+import RecommendationCard from '../pages/components/RecommendationCard'
 
-import RecommendationCard from './components/RecommendationCard';
+
 import SwiperCard from './components/Swiper';
+import TopPicksCard from '../pages/components/TopPicksCard';
 
 const Home: React.FC = () => {
 
    
       
     return (
-        <IonPage>
+        <IonPage >
             <IonHeader>
                 <IonToolbar color={'primary'}>
                     <IonTitle >Home</IonTitle>
@@ -25,43 +27,24 @@ const Home: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-               <SwiperCard /> 
+             
+            
 
-                    
-
-                  <RecommendationCard />
+               <SwiperCard />
+                <div style={{height:'240px'}}>
+                          <RecommendationCard /> 
+                </div>
+                
+                <div style={{height:'240px'}}>
+                      <TopPicksCard />
+                </div>
+             
+             
+         
               
          
 
-            {/* <IonGrid color={'primary'}>
-                <IonRow className='ion-justify-center'>
-                  <IonCol>
-                  <IonList>
-                    {items.map((item, index) => (
-                    <IonItem key={item}>
-                        <IonAvatar slot="start">
-                            < img src={'https://picsum.photos/80/80?random=' + index} alt="avatar" />
-                         </IonAvatar>
-                         <IonLabel>{item}</IonLabel>
-                    </IonItem>
-                        ))}
-                    </IonList>
-                    <IonInfiniteScroll
-                        onIonInfinite={(ev) => {
-                        generateItems();
-                        setTimeout(() => ev.target.complete(), 500);
-                        }}
-                    >
-                        <IonInfiniteScrollContent></IonInfiniteScrollContent>
-                    </IonInfiniteScroll>
-                    
-                  </IonCol>
-               
-            </IonRow>
-               
-           </IonGrid> */}
-
-      
+           
             </IonContent>
         </IonPage>
     );

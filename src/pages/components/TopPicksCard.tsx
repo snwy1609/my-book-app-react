@@ -23,7 +23,7 @@ import {
 import { add, listOutline } from 'ionicons/icons';
 import MyModal from './MyModal';
 
-const MyComponent = () => {
+const PicksCard = () => {
   const [responseData, setResponseData] = useState<any>(null);
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [showModal, setShowModal] = useState(false);
@@ -32,7 +32,7 @@ const MyComponent = () => {
     try {
       // Replace 'YOUR_API_KEY' with your actual Google Books API key
       const apiKey = 'AIzaSyAvrvt_qN7X4lvRWTU70r1qG1V6qQf3Auw';
-      const path = `https://www.googleapis.com/books/v1/volumes?q=anygenre&key=${apiKey}`;
+      const path = `https://www.googleapis.com/books/v1/volumes?q=romantic&key=${apiKey}`;
       const response = await fetch(path);
       const data = await response.json();
       setResponseData(data);
@@ -61,14 +61,13 @@ const MyComponent = () => {
     <IonContent>
       {responseData && responseData.items && (
         <div>
-          <h4 className='ion-padding-start'>Recommendations</h4>
-          <div style={{ display: 'flex', overflowX: 'auto', marginLeft:'5px' }}>
+          <h4 className='ion-padding-start'>Top Picks For You</h4>
+          <div style={{ display: 'flex', overflowX: 'auto' }}>
             {responseData.items.map((item: any, index: number) => (
-              <div className='home' style={{ display: 'flex', margin:'0'}} >
+              <div className='home' style={{ display: 'flex', flexDirection: 'row' }}>
                 <IonCard
                   key={index}
-                
-                  style={{ width: '110px', gap: '0' }}
+                  style={{ width: '110px', position: 'relative' }}
                   onClick={() => openModal(item)}
                 >
                   <img
@@ -80,22 +79,18 @@ const MyComponent = () => {
                       objectFit: 'cover',
                     }}
                   />
-                  
                 </IonCard>
-           
               </div>
             ))}
-                
           </div>
         </div>
       )}
 
       {/* Ionic Modal */}
       <MyModal isOpen={showModal} onClose={closeModal} selectedItem={selectedItem} />
-   
+  
     </IonContent>
-    
   );
 };
 
-export default MyComponent;
+export default PicksCard;
