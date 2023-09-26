@@ -62,7 +62,8 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                     <h2 style={{ fontWeight: 'bold', fontSize: '23px' }} className='ion-color-primary'>
                     {selectedItem?.volumeInfo.title}
                     </h2>
-                    <p>{selectedItem?.volumeInfo.authors?.join(', ')}</p>
+                    <p>  {selectedItem?.volumeInfo.subtitle}</p>
+                    <p style={{fontWeight:'bold', fontStyle:'oblique'}}>By: {selectedItem?.volumeInfo.authors?.join(', ')}</p>
                 </div>
 
                 <div style={{ display: 'flex', color: 'lightgrey', justifyContent: 'end', paddingTop: '10px' }}>
@@ -90,6 +91,11 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                     <b>Description: </b>
                     {selectedItem?.volumeInfo.description}
                 </p>
+                <p className='ion-padding-top'><b>Publisher </b>{selectedItem?.volumeInfo.publisher}</p>
+               
+                <p><b>Published Date: </b>{selectedItem?.volumeInfo.publishedDate}</p>
+               
+                
                 </IonLabel>
             </IonItem>
         </IonContent>
