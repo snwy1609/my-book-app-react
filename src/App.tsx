@@ -24,6 +24,9 @@ import './theme/variables.css';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Menu from './pages/Menu';
+import ReadBook from './pages/ReadBook';
+import Home from './pages/Home';
+import PaidStory from './pages/Category/PaidStories';
 
 setupIonicReact({
   // mode: 'ios',
@@ -39,7 +42,12 @@ const App: React.FC = () => (
         </Route>
        <Route component={Register} path="/register" exact />
        <Route component={Menu} path="/app"    />
+       <Route path="/read-book/:itemId" component={ReadBook} exact />
+       <Route path="/home" component={Home} />
+       <Route path="/app/home/tab5/paid" component={PaidStory} />
+
       </IonRouterOutlet>
+      
     </IonReactRouter>
   </IonApp>
 );

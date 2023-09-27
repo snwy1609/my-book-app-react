@@ -17,7 +17,9 @@ import {
   IonTitle,
   IonContent,
 } from '@ionic/react';
-import { listOutline, add } from 'ionicons/icons';
+import { listOutline, add, saveOutline, save, bookmark } from 'ionicons/icons';
+import { useHistory } from 'react-router';
+
 
 interface MyModalProps {
   isOpen: boolean;
@@ -26,8 +28,16 @@ interface MyModalProps {
 }
 
 const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
+
+    const history = useHistory();
+
+    const handleReadButtonClick = () => {
+      // Navigate to the new page when the button is clicked
+      history.push(`/read-book/${selectedItem?.id}`);
+      onClose();
+    };
   return (
-    <IonModal isOpen={isOpen} onDidDismiss={onClose}>
+    <IonModal isOpen={isOpen} onDidDismiss={onClose} className="custom-modal">
         <IonHeader>
              <IonToolbar>
                 <IonButtons slot='start'>
@@ -76,13 +86,13 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                     <IonRow>
                     <IonCol size='1'></IonCol>
                     <IonCol size='8'>
-                        <IonButton expand='block' size='default'>
+                        <IonButton expand='block' size='default' onClick={() => { handleReadButtonClick(); onClose(); }}>
                         <IonLabel style={{ fontSize: '16px', color: 'white' }}>Read</IonLabel>
                         </IonButton>
                     </IonCol>
                     <IonCol style={{ display: 'flex', justifyContent: 'start' }} size='3'>
-                        <div style={{ borderRadius: '100%', display: 'flex', margin: '5px', backgroundColor: 'lightgray' }}>
-                        <IonIcon icon={add} size='large' color='white'></IonIcon>
+                        <div style={{ borderRadius: '100%', display: 'flex', margin: '5px', backgroundColor: 'white' }}>
+                        <IonIcon icon={bookmark} size='large' color='white'></IonIcon>
                         </div>
                     </IonCol>
                     </IonRow>
