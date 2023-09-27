@@ -1,8 +1,9 @@
 import React from 'react';
 import { IonCard, IonCardContent, IonRouterLink } from '@ionic/react';
 import uniqolor from 'uniqolor';
+import { useHistory } from 'react-router';
 
-const CategoryLink: React.FC<{ category: string; image: string }> = ({ category, image }) => {
+const CategoryLink: React.FC<{ category: string; image: string; path: string }> = ({ category, image, path }) => {
   // Generate a random color
   const randColor = uniqolor.random();
   const cardStyle = {
@@ -28,12 +29,17 @@ const CategoryLink: React.FC<{ category: string; image: string }> = ({ category,
     filter: 'contrast(0.60)',
     
   };
+ 
+  const history = useHistory();
 
+  const handleCardClick = () => {
+    history.push(path);
+  };
   
 
   return (
-    <IonRouterLink>
-      <IonCard style={cardStyle} className="rounded-xl aspect-square relative ">
+    <IonRouterLink href={path}>
+      <IonCard style={cardStyle} className="rounded-xl aspect-square relative" onClick={handleCardClick} >
         <IonCardContent className=" ion-text-weight-bold">
           <div className=" pt-3 pl-4 ion-padding-top ion-padding-bottom" style={textStyle}>{category}</div>
           <img src={image || ''} style={imageStyle} alt=""  />

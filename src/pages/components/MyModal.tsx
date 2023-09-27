@@ -17,7 +17,9 @@ import {
   IonTitle,
   IonContent,
 } from '@ionic/react';
-import { listOutline, add } from 'ionicons/icons';
+import { listOutline, add, saveOutline, save, bookmark } from 'ionicons/icons';
+import { useHistory } from 'react-router';
+
 
 interface MyModalProps {
   isOpen: boolean;
@@ -26,8 +28,16 @@ interface MyModalProps {
 }
 
 const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
+
+    const history = useHistory();
+
+    const handleReadButtonClick = () => {
+      // Navigate to the new page when the button is clicked
+      history.push(`/read-book/${selectedItem?.id}`);
+      onClose();
+    };
   return (
-    <IonModal isOpen={isOpen} onDidDismiss={onClose}>
+    <IonModal isOpen={isOpen} onDidDismiss={onClose} className="custom-modal">
         <IonHeader>
              <IonToolbar>
                 <IonButtons slot='start'>
@@ -62,7 +72,8 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                     <h2 style={{ fontWeight: 'bold', fontSize: '23px' }} className='ion-color-primary'>
                     {selectedItem?.volumeInfo.title}
                     </h2>
-                    <p>{selectedItem?.volumeInfo.authors?.join(', ')}</p>
+                    <p>  {selectedItem?.volumeInfo.subtitle}</p>
+                    <p style={{fontWeight:'bold', fontStyle:'oblique'}}>By: {selectedItem?.volumeInfo.authors?.join(', ')}</p>
                 </div>
 
                 <div style={{ display: 'flex', color: 'lightgrey', justifyContent: 'end', paddingTop: '10px' }}>
@@ -75,13 +86,13 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                     <IonRow>
                     <IonCol size='1'></IonCol>
                     <IonCol size='8'>
-                        <IonButton expand='block' size='default'>
+                        <IonButton expand='block' size='default' onClick={() => { handleReadButtonClick(); onClose(); }}>
                         <IonLabel style={{ fontSize: '16px', color: 'white' }}>Read</IonLabel>
                         </IonButton>
                     </IonCol>
                     <IonCol style={{ display: 'flex', justifyContent: 'start' }} size='3'>
-                        <div style={{ borderRadius: '100%', display: 'flex', margin: '5px', backgroundColor: 'lightgray' }}>
-                        <IonIcon icon={add} size='large' color='white'></IonIcon>
+                        <div style={{ borderRadius: '100%', display: 'flex', margin: '5px', backgroundColor: 'white' }}>
+                        <IonIcon icon={bookmark} size='large' color='white'></IonIcon>
                         </div>
                     </IonCol>
                     </IonRow>
@@ -90,6 +101,11 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                     <b>Description: </b>
                     {selectedItem?.volumeInfo.description}
                 </p>
+                <p className='ion-padding-top'><b>Publisher </b>{selectedItem?.volumeInfo.publisher}</p>
+               
+                <p><b>Published Date: </b>{selectedItem?.volumeInfo.publishedDate}</p>
+               
+                
                 </IonLabel>
             </IonItem>
         </IonContent>
