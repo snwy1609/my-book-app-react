@@ -34,7 +34,7 @@ const MyComponent = () => {
       // Replace 'YOUR_API_KEY' with your actual Google Books API key
       const apiKey = 'AIzaSyAvrvt_qN7X4lvRWTU70r1qG1V6qQf3Auw';
       const maxResults = 40;
-      const path = `https://www.googleapis.com/books/v1/volumes?q=fiction&maxResults=${maxResults}&key=${apiKey}`;
+      const path = `https://www.googleapis.com/books/v1/volumes?q=finance&maxResults=${maxResults}&key=${apiKey}`;
       const response = await fetch(path);
       const data = await response.json();
       setResponseData(data);
@@ -63,7 +63,7 @@ const MyComponent = () => {
     <IonContent>
       {responseData && responseData.items && (
         <div>
-          <h4 className='ion-padding-start' style={{}}>Recommendations</h4>
+          <h4 className='ion-padding-start' style={{}}>Finance</h4>
           <div style={{ display: 'flex', overflowX: 'auto', marginLeft:'5px' }}>
             {responseData.items.map((item: any, index: number) => (
               <div className='home card-container' style={{ display: 'flex', margin:'0'}} >

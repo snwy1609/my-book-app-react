@@ -2,13 +2,15 @@ import { IonContent, IonHeader, IonMenu, IonPage, IonButton, IonIcon, IonItem, I
 import { homeOutline, logOutOutline, personOutline, settingsOutline } from 'ionicons/icons';
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import List from './List';
+import Profile from './Profile';
 import Tabs from './Tabs';
+import Settings from './Settings'
 
 const Menu: React.FC = () => {
     const paths = [
         { name: 'Home', url: '/app/home', icon: homeOutline},
-        { name: 'Profile', url: '/app/list', icon: personOutline },
+        { name: 'Profile', url: '/app/profile', icon: personOutline },
+        { name: 'Settings', url: '/app/settings', icon: settingsOutline },
        
 
     ];
@@ -41,7 +43,8 @@ const Menu: React.FC = () => {
 
           </IonMenu>
            <IonRouterOutlet id="main">
-             <Route exact path= "/app/list" component={List} />
+             <Route exact path= "/app/profile" component={Profile} />
+             <Route exact path= "/app/settings" component={Settings} />
              <Route path= "/app/home" component={Tabs} />
              <Route exact path="/app">
                 <Redirect to="/app/home" />

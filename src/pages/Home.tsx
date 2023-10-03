@@ -8,6 +8,7 @@ import Tab2 from './Tab2';
 import Tab3 from './Tab3';
 import Tab4 from './Tab4';
 import Tab5 from './Tab5';
+import Finance from './components/Finance';
 
 const Home: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -54,6 +55,9 @@ const Home: React.FC = () => {
                 </div>
                 <div style={{ height: '250px' }}>
                     <TopPicksCard />
+                </div>
+                <div style={{ height: '250px' }}>
+                    <Finance />
                 </div>
             </IonContent>
 

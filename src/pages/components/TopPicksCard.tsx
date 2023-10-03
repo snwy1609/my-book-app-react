@@ -22,6 +22,7 @@ import {
 } from '@ionic/react';
 import { add, listOutline } from 'ionicons/icons';
 import MyModal from './MyModal';
+import '../Style.css'
 
 const PicksCard = () => {
   const [responseData, setResponseData] = useState<any>(null);
@@ -33,7 +34,7 @@ const PicksCard = () => {
       // Replace 'YOUR_API_KEY' with your actual Google Books API key
       const apiKey = 'AIzaSyAvrvt_qN7X4lvRWTU70r1qG1V6qQf3Auw';
       const maxResults = 40;
-      const path = `https://www.googleapis.com/books/v1/volumes?q=bestprogramming&maxResults=${maxResults}&key=${apiKey}`;
+      const path = `https://www.googleapis.com/books/v1/volumes?q=toppicks&maxResults=${maxResults}&key=${apiKey}`;
       const response = await fetch(path);
       const data = await response.json();
       setResponseData(data);
@@ -65,7 +66,7 @@ const PicksCard = () => {
           <h4 className='ion-padding-start'>Top Picks For You</h4>
           <div style={{ display: 'flex', overflowX: 'auto' }}>
             {responseData.items.map((item: any, index: number) => (
-              <div className='home' style={{ display: 'flex', flexDirection: 'row' }}>
+              <div className='home card-container' style={{ display: 'flex', flexDirection: 'row' }}>
                 <IonCard
                   key={index}
                   style={{ width: '110px', position: 'relative' }}
