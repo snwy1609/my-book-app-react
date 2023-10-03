@@ -1,8 +1,9 @@
-import { CreateAnimation, createGesture, Gesture, GestureDetail, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar, useIonViewDidEnter } from '@ionic/react';
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import Library from '../pages/components/Library';
 
-const Tab2: React.FC = () => {
-
+const LibraryPage: React.FC = () => {
+    const [bookmarks, setBookmarks] = useState([]); // Define bookmarks state here
 
     return (
         <IonPage>
@@ -11,22 +12,20 @@ const Tab2: React.FC = () => {
                     <IonTitle>Library</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent className="ion-padding" scrollY={false}>
-                <IonGrid>
-                    <IonRow>
-                        <IonCol size='6'>
-                             <h4>Available Offline</h4>
-                        </IonCol>
-                        <IonCol size='6' >
-                             <h6>0 Stories</h6>
-                        </IonCol>
-                    </IonRow>
-                </IonGrid>
-               
-               
-            </IonContent>
+            <IonContent className="ion-padding">
+   <Library bookmarks={bookmarks} />
+   {bookmarks.length > 0 ? (
+     <ul>
+       {bookmarks.map(bookmark => (
+         <li key={bookmark.id}>{bookmark.volumeInfo.title}</li>
+       ))}
+     </ul>
+   ) : (
+     <p>No bookmarks available</p>
+   )}
+</IonContent>
         </IonPage>
     );
 };
 
-export default Tab2;
+export default LibraryPage;

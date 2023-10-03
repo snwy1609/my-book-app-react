@@ -26,14 +26,19 @@ import Register from './pages/Register';
 import Menu from './pages/Menu';
 import ReadBook from './pages/ReadBook';
 import Home from './pages/Home';
-import PaidStory from './pages/Category/PaidStories';
+
+import LibraryPage from './pages/Tab2';
+import { useState } from 'react';
 
 setupIonicReact({
   // mode: 'ios',
   // animated: false,
 });
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  const [bookmarks, setBookmarks] = useState([]);
+  
+  return(
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
@@ -44,12 +49,19 @@ const App: React.FC = () => (
        <Route component={Menu} path="/app"    />
        <Route path="/read-book/:itemId" component={ReadBook} exact />
        <Route path="/home" component={Home} />
-       <Route path="/app/home/tab5/paid" component={PaidStory} />
+     
+    
+        {/* Add other routes */}
+ 
 
+
+       
       </IonRouterOutlet>
       
     </IonReactRouter>
   </IonApp>
+
 );
+  };
 
 export default App;

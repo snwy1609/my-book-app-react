@@ -48,17 +48,17 @@ const Login: React.FC = () => {
         
         <IonPage>
             <IonHeader>
-                <IonToolbar color={'primary'}>
-                    <IonTitle>My App</IonTitle>
+                <IonToolbar color={''}>
+                    <IonTitle>Book App</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
                
                <IonGrid fixed>
-                  <IonRow class='ion-justify-content-center'>
+                  <IonRow class='ion-justify-content-center ion-margin-top'>
                      <IonCol size="12" sizeMd='8' sizeLg='6' sizeXl='4'>
                           <div className='ion-text-center ion-padding' >
-                             <img src={Image} alt="logo"  width={'30%'}/>
+                             <img src="../assets/BookLogo.png" alt="logo"  width={'40%'}/>
                           </div>
                      </IonCol>
                 </IonRow>

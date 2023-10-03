@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   IonModal,
   IonCard,
@@ -21,21 +21,44 @@ import { listOutline, add, saveOutline, save, bookmark } from 'ionicons/icons';
 import { useHistory } from 'react-router';
 
 
+interface Book {
+  id: string;
+  volumeInfo: {
+    title: string;
+    subtitle: string;
+    // ... other properties
+  };
+}
 interface MyModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedItem: any;
+  selectedItem: Book;
 }
+
+
 
 const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
 
     const history = useHistory();
+    const [bookmarks, setBookmarks] = useState<Book[]>([]); 
 
     const handleReadButtonClick = () => {
       // Navigate to the new page when the button is clicked
       history.push(`/read-book/${selectedItem?.id}`);
       onClose();
     };
+
+    const handleBookmarkClick = () => {
+      // Check if the selectedItem is not already in bookmarks
+      if (selectedItem && !bookmarks.some(bookmark => bookmark.id === selectedItem.id)) {
+        // Add the selectedItem to bookmarks
+        setBookmarks([...bookmarks, selectedItem]);
+        // Optionally, you can save the bookmarks array to local storage or API for persistence
+      }
+  
+      onClose();
+    };
+ 
   return (
     <IonModal isOpen={isOpen} onDidDismiss={onClose} className="custom-modal">
         <IonHeader>
@@ -91,9 +114,9 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                         </IonButton>
                     </IonCol>
                     <IonCol style={{ display: 'flex', justifyContent: 'start' }} size='3'>
-                        <div style={{ borderRadius: '100%', display: 'flex', margin: '5px', backgroundColor: 'white' }}>
-                        <IonIcon icon={bookmark} size='large' color='white'></IonIcon>
-                        </div>
+                    <div onClick={handleBookmarkClick} style={{ borderRadius: '100%', display: 'flex', margin: '5px', backgroundColor: 'white' }}>
+                  <IonIcon icon={bookmark} size='large' color={bookmarks.some(bookmark => bookmark.id === selectedItem?.id) ? 'primary' : 'white'} />
+                </div>
                     </IonCol>
                     </IonRow>
                 </IonGrid>

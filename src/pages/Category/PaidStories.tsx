@@ -25,6 +25,7 @@ import {
 import { add, bookSharp, listOutline, readerOutline, star } from 'ionicons/icons';
 import MyModal from '../components/MyModal';
 import { useHistory } from 'react-router';
+import BookCard from './CategoryCard';
 
 const MyComponent = () => {
   const [responseData, setResponseData] = useState<any>(null);
@@ -73,7 +74,7 @@ const MyComponent = () => {
     <IonPage>
   
         <IonHeader>
-            <IonToolbar>
+            <IonToolbar color={'primary'}>
             <IonBackButton defaultHref="/app/home/tab5" onClick={handleGoBack} slot='start'/>
             <h4 className='ion-padding-start' style={{}}>Paid Stories</h4>
 
@@ -81,65 +82,15 @@ const MyComponent = () => {
         </IonHeader>
         <IonContent className=' ion-padding-top'>
       {responseData && responseData.items && (
-        <div>
+       
         
           <div style={{ overflowY: 'auto', marginLeft:'5px' }}>
             {responseData.items.map((item: any, index: number) => (
-              <div className='home' style={{ display: 'flex', margin:'0'}} >
-                <IonCard
-                  key={index}
-                
-                  style={{ width: '100%', gap: '0', height:'210px'}}
-                  onClick={() => openModal(item)}
-                >
-                  <IonGrid>
-                    <IonRow>
-                        <IonCol size='4'>
-                          <img
-                            src={item.volumeInfo.imageLinks?.thumbnail}
-                            alt='Book Cover'
-                            style={{
-                            maxWidth: '120px',
-                            height: '200px',
-                            objectFit: 'cover',
-                            }}
-                        />
-                        </IonCol>
-                        <IonCol>
-                             <IonItem lines='none'>
-                               
-                                     <div style={{}}> 
-                                        <h5>{item.volumeInfo.title} </h5>
-                                        <div style={{display:'flex'}}>
-                                            <div style={{display:'flex', padding:'5px'}}>
-                                                <IonIcon icon={bookSharp} color='primary'></IonIcon>
-                                               {item.volumeInfo.ratingsCount}
-                                            </div>
-                                            <div style={{display:'flex', padding: '5px'}} >
-                                                <IonIcon icon={star} color='secondary'></IonIcon>
-                                               {item.volumeInfo.averageRating}
-                                            </div>
-                                        </div>
-                                        <p style={{fontSize:'13px'}}> {item.volumeInfo.description}</p>
-                                        
-                                    </div>
-                                     <div>
-                                        
-                                     </div>
-                               
-
-                             </IonItem>
-                        </IonCol>
-                    </IonRow>
-                  </IonGrid>
-                
-                  
-                </IonCard>
-           
-              </div>
+                 <BookCard key={index} book={item} openModal={openModal} />
+            
             ))}
                 
-          </div>
+         
         </div>
       )}
 

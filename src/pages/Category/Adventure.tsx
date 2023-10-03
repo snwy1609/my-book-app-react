@@ -19,22 +19,27 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonBackButton,
+  IonPage,
 } from '@ionic/react';
-import { add, listOutline } from 'ionicons/icons';
-import MyModal from './MyModal';
-import '../Style.css'
+import { add, bookSharp, listOutline, readerOutline, star } from 'ionicons/icons';
+import MyModal from '../components/MyModal';
+import { useHistory } from 'react-router';
+import BookCard from './CategoryCard';
 
 const MyComponent = () => {
   const [responseData, setResponseData] = useState<any>(null);
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [showModal, setShowModal] = useState(false);
 
+  
+
   const fetchData = async () => {
     try {
       // Replace 'YOUR_API_KEY' with your actual Google Books API key
       const apiKey = 'AIzaSyAvrvt_qN7X4lvRWTU70r1qG1V6qQf3Auw';
       const maxResults = 40;
-      const path = `https://www.googleapis.com/books/v1/volumes?q=fiction&maxResults=${maxResults}&key=${apiKey}`;
+      const path = `https://www.googleapis.com/books/v1/volumes?q=adveture&maxResults=${maxResults}&key=${apiKey}`;
       const response = await fetch(path);
       const data = await response.json();
       setResponseData(data);
@@ -59,36 +64,35 @@ const MyComponent = () => {
     setShowModal(false);
   };
 
+  const history = useHistory();
+
+  const handleGoBack = () => {
+    history.goBack(); // Use this to navigate back
+  };
+
+
   return (
-    <IonContent>
+
+    <IonPage>
+  
+        <IonHeader>
+            <IonToolbar color={'primary'}>
+            <IonBackButton defaultHref="/app/home/tab5" onClick={handleGoBack} slot='start'/>
+            <h4 className='ion-padding-start' style={{}}>Adventure</h4>
+
+            </IonToolbar>
+        </IonHeader>
+        <IonContent className=' ion-padding-top'>
       {responseData && responseData.items && (
-        <div>
-          <h4 className='ion-padding-start' style={{}}>Recommendations</h4>
-          <div style={{ display: 'flex', overflowX: 'auto', marginLeft:'5px' }}>
+       
+        
+          <div style={{ overflowY: 'auto', marginLeft:'5px' }}>
             {responseData.items.map((item: any, index: number) => (
-              <div className='home card-container' style={{ display: 'flex', margin:'0'}} >
-                <IonCard
-                  key={index}
-                
-                  style={{ width: '110px', gap: '0' }}
-                  onClick={() => openModal(item)}
-                >
-                  <img
-                    src={item.volumeInfo.imageLinks?.thumbnail}
-                    alt='Book Cover'
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                  
-                </IonCard>
-           
-              </div>
+                 <BookCard key={index} book={item} openModal={openModal} />
+            
             ))}
                 
-          </div>
+         
         </div>
       )}
 
@@ -96,6 +100,7 @@ const MyComponent = () => {
       <MyModal isOpen={showModal} onClose={closeModal} selectedItem={selectedItem} />
    
     </IonContent>
+    </IonPage>
     
   );
 };

@@ -7,6 +7,8 @@ import Tab3 from './Tab3';
 import Tab2 from './Tab2';
 import Tab4 from './Tab4';
 import Tab5 from './Tab5';
+import PaidStory from './Category/PaidStories';
+import Adventure from './Category/Adventure';
 
 const Tabs: React.FC = () => {
 
@@ -25,10 +27,10 @@ const Tabs: React.FC = () => {
                   <IonIcon icon={librarySharp} />
                   <IonLabel>Library</IonLabel>
                </IonTabButton>
-               <IonTabButton tab="tab2" href='/app/home/tab3'>
+               {/* <IonTabButton tab="tab2" href='/app/home/tab3'>
                   <IonIcon icon={pencilSharp} />
                   <IonLabel>Tab3</IonLabel>
-               </IonTabButton>
+               </IonTabButton> */}
                <IonTabButton tab="tab4" href='/app/home/tab4'>
                   <IonIcon icon={notificationsSharp} />
                   <IonLabel>Tab4</IonLabel>
@@ -41,7 +43,10 @@ const Tabs: React.FC = () => {
             <Route path="/app/home/tab2" component={Tab2} />
             <Route path="/app/home/tab3" component={Tab3} />
             <Route path="/app/home/tab4" component={Tab4} />
-            <Route path="/app/home/tab5" component={Tab5} />
+
+            <Route path="/app/home/tab5" exact component={Tab5} />
+            <Route path="/app/home/tab5/paid" component={PaidStory} />
+            <Route path="/app/home/tab5/adventure" component={Adventure} />
 
             {/* //initial page */}
             <Route exact path="/app/home">
