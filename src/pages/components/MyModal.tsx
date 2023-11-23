@@ -126,7 +126,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onClose, selectedItem }) => {
                 </p>
                 <p className='ion-padding-top'><b>Publisher </b>{selectedItem?.volumeInfo.publisher}</p>
                
-                <p><b>Published Date: </b>{selectedItem?.volumeInfo.publishedDate}</p>
+                {/* <p><b>Published Date: </b>{selectedItem?.volumeInfo.publishedDate}</p> */}
                
                 
                 </IonLabel>

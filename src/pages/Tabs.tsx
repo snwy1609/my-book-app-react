@@ -5,7 +5,7 @@ import { Redirect, Route } from 'react-router';
 import Home from './Home';
 import Tab3 from './Tab3';
 import Tab2 from './Tab2';
-import Tab4 from './Tab4';
+import Settings from './Settings';
 import Tab5 from './Tab5';
 import PaidStory from './Category/PaidStories';
 import Adventure from './Category/Adventure';
@@ -33,7 +33,7 @@ const Tabs: React.FC = () => {
                </IonTabButton> */}
                <IonTabButton tab="tab4" href='/app/home/tab4'>
                   <IonIcon icon={notificationsSharp} />
-                  <IonLabel>Tab4</IonLabel>
+                  <IonLabel>Settings</IonLabel>
                </IonTabButton>
              
           </IonTabBar>
@@ -42,7 +42,7 @@ const Tabs: React.FC = () => {
             <Route path="/app/home/tab1" component={Home} />
             <Route path="/app/home/tab2" component={Tab2} />
             <Route path="/app/home/tab3" component={Tab3} />
-            <Route path="/app/home/tab4" component={Tab4} />
+            <Route path="/app/home/tab4" component={Settings} />
 
             <Route path="/app/home/tab5" exact component={Tab5} />
             <Route path="/app/home/tab5/paid" component={PaidStory} />

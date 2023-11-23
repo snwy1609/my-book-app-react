@@ -7,10 +7,11 @@ import Tabs from './Tabs';
 import Settings from './Settings'
 
 const Menu: React.FC = () => {
+    
     const paths = [
         { name: 'Home', url: '/app/home', icon: homeOutline},
         { name: 'Profile', url: '/app/profile', icon: personOutline },
-        { name: 'Settings', url: '/app/settings', icon: settingsOutline },
+     
        
 
     ];
